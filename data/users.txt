@@ -1,0 +1,3 @@
+u_1000|alice|alice |C%2b%2b expert %7c Building social platforms|u_1001,u_1002|u_1001,u_1002
+u_1001|bob|Bob Smith|Tech enthusiast and gamer||u_1000
+u_1002|charlie|Charlie Brown|Data science student||u_1000

@@ -1,0 +1,10 @@
+u_1000|alice|Alice%20Kumar|Software%20engineer%20%7C%20C%2B%2B%20enthusiast|u_1001,u_1002,u_1003|u_1001,u_1002,u_1003,u_1004,u_1005
+u_1001|bob|Bob%20Smith|Tech%20blogger%20and%20gamer|u_1000,u_1004|u_1000,u_1003
+u_1002|charlie|Charlie%20Brown|Data%20science%20student|u_1000|u_1000,u_1001,u_1006
+u_1003|diana|Diana%20Prince|Full-stack%20developer|u_1000,u_1001|u_1000,u_1007
+u_1004|eve|Eve%20Anderson|Cybersecurity%20expert|u_1001|u_1000,u_1001,u_1008
+u_1005|frank|Frank%20Miller|AI%20researcher|u_1000|u_1002,u_1009
+u_1006|grace|Grace%20Hopper|Computer%20science%20pioneer|u_1002|u_1001,u_1002
+u_1007|henry|Henry%20Ford|Automation%20enthusiast|u_1003|u_1003,u_1004
+u_1008|iris|Iris%20Watson|Mobile%20app%20developer|u_1004|u_1004,u_1005
+u_1009|jack|Jack%20Dorsey|Social%20media%20innovator|u_1005|u_1000,u_1006

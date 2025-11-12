@@ -1,0 +1,101 @@
+[2024-11-05 10:15:30] INFO: SystemCore initialized
+[2024-11-05 10:15:30] INFO: Loaded 3 users
+[2024-11-05 10:15:30] INFO: Loaded 5 posts
+[2024-11-05 10:15:45] INFO: User added: u_1003
+[2024-11-05 10:16:02] INFO: Post added: p_1005
+[2024-11-05 10:16:15] INFO: u_1000 followed u_1003
+[2024-11-05 10:16:30] INFO: Saved 4 users
+[2024-11-05 10:16:30] INFO: Saved 6 posts
+[2024-11-05 10:16:30] INFO: SystemCore destroyed
+[2025-11-05 22:46:15] INFO: SystemCore initialized
+[2025-11-05 22:46:15] INFO: Loaded 3 users
+[2025-11-05 22:46:15] INFO: Loaded 5 posts
+[2025-11-05 22:46:38] INFO: SystemCore initialized
+[2025-11-05 22:46:38] INFO: Loaded 3 users
+[2025-11-05 22:46:38] INFO: Loaded 5 posts
+[2025-11-05 22:47:12] INFO: SystemCore initialized
+[2025-11-05 22:47:12] INFO: Loaded 3 users
+[2025-11-05 22:47:12] INFO: Loaded 5 posts
+[2025-11-05 22:48:50] INFO: SystemCore initialized
+[2025-11-05 22:48:50] INFO: Loaded 3 users
+[2025-11-05 22:48:50] INFO: Loaded 5 posts
+[2025-11-05 22:51:02] WARNING: User already exists: u_1000
+[2025-11-05 22:51:45] WARNING: User already exists: u_1001
+[2025-11-05 22:51:54] INFO: Saved 3 users
+[2025-11-05 22:51:54] INFO: Saved 5 posts
+[2025-11-05 22:51:54] INFO: Saved 3 users
+[2025-11-05 22:51:54] INFO: Saved 5 posts
+[2025-11-05 22:52:07] INFO: SystemCore initialized
+[2025-11-05 22:52:07] INFO: Loaded 3 users
+[2025-11-05 22:52:07] INFO: Loaded 5 posts
+[2025-11-05 22:53:34] WARNING: Post already exists: p_1000
+[2025-11-06 10:01:42] INFO: SystemCore initialized
+[2025-11-06 10:01:42] INFO: Loaded 3 users
+[2025-11-06 10:01:42] INFO: Loaded 5 posts
+[2025-11-06 10:02:10] WARNING: User already exists: u_1000
+[2025-11-06 10:02:24] INFO: Saved 3 users
+[2025-11-06 10:02:24] INFO: Saved 5 posts
+[2025-11-06 10:02:24] INFO: Saved 3 users
+[2025-11-06 10:02:24] INFO: Saved 5 posts
+[2025-11-06 13:47:10] INFO: SystemCore initialized
+[2025-11-06 13:47:10] INFO: Loaded 3 users
+[2025-11-06 13:47:10] INFO: Loaded 5 posts
+[2025-11-06 13:47:24] INFO: Saved 3 users
+[2025-11-06 13:47:24] INFO: Saved 5 posts
+[2025-11-06 13:47:24] INFO: Saved 3 users
+[2025-11-06 13:47:24] INFO: Saved 5 posts
+[2025-11-06 13:47:40] INFO: SystemCore initialized
+[2025-11-06 13:47:40] INFO: Loaded 3 users
+[2025-11-06 13:47:40] INFO: Loaded 5 posts
+[2025-11-06 13:48:31] WARNING: User already exists: u_1000
+[2025-11-06 14:56:52] INFO: SystemCore initialized
+[2025-11-06 14:56:52] INFO: Loaded 3 users
+[2025-11-06 14:56:52] INFO: Loaded 5 posts
+[2025-11-06 14:57:14] WARNING: User already exists: u_1000
+[2025-11-10 14:02:42] INFO: SystemCore initialized
+[2025-11-10 14:02:42] INFO: Loaded 3 users
+[2025-11-10 14:02:42] INFO: Loaded 5 posts
+[2025-11-10 14:58:10] INFO: SystemCore initialized
+[2025-11-10 14:58:10] INFO: Loaded 3 users
+[2025-11-10 14:58:10] INFO: Loaded 5 posts
+[2025-11-10 15:06:49] INFO: Saved 3 users
+[2025-11-10 15:06:49] INFO: Saved 5 posts
+[2025-11-10 15:06:49] INFO: Saved 3 users
+[2025-11-10 15:06:49] INFO: Saved 5 posts
+[2025-11-10 15:06:54] INFO: SystemCore initialized
+[2025-11-10 15:06:54] INFO: Loaded 3 users
+[2025-11-10 15:06:54] INFO: Loaded 5 posts
+[2025-11-10 15:07:27] INFO: Saved 3 users
+[2025-11-10 15:07:27] INFO: Saved 5 posts
+[2025-11-10 15:07:27] INFO: Saved 3 users
+[2025-11-10 15:07:27] INFO: Saved 5 posts
+[2025-11-10 15:07:44] INFO: SystemCore initialized
+[2025-11-10 15:07:44] INFO: Loaded 3 users
+[2025-11-10 15:07:44] INFO: Loaded 5 posts
+[2025-11-10 15:10:41] INFO: SystemCore initialized
+[2025-11-10 15:10:41] INFO: Loaded 3 users
+[2025-11-10 15:10:41] INFO: Loaded 5 posts
+[2025-11-10 15:15:00] INFO: SystemCore initialized
+[2025-11-10 15:15:00] INFO: Loaded 3 users
+[2025-11-10 15:15:00] INFO: Loaded 5 posts
+[2025-11-10 15:15:30] INFO: Saved 3 users
+[2025-11-10 15:15:30] INFO: Saved 5 posts
+[2025-11-10 15:15:30] INFO: Saved 3 users
+[2025-11-10 15:15:30] INFO: Saved 5 posts
+[2025-11-10 15:19:26] INFO: SystemCore initialized
+[2025-11-10 15:19:26] INFO: Loaded 3 users
+[2025-11-10 15:19:26] INFO: Loaded 5 posts
+[2025-11-10 15:23:03] INFO: Saved 3 users
+[2025-11-10 15:23:03] INFO: Saved 5 posts
+[2025-11-10 15:23:03] INFO: Saved 3 users
+[2025-11-10 15:23:03] INFO: Saved 5 posts
+[2025-11-12 18:54:02] INFO: SystemCore initialized
+[2025-11-12 18:54:02] INFO: Loaded 3 users
+[2025-11-12 18:54:02] INFO: Loaded 5 posts
+[2025-11-12 18:54:30] WARNING: User already exists: u_1000
+[2025-11-12 18:55:15] WARNING: Post already exists: p_1001
+[2025-11-12 18:56:45] WARNING: Post already exists: p_1002
+[2025-11-12 18:56:57] INFO: Saved 3 users
+[2025-11-12 18:56:57] INFO: Saved 5 posts
+[2025-11-12 18:56:57] INFO: Saved 3 users
+[2025-11-12 18:56:57] INFO: Saved 5 posts
