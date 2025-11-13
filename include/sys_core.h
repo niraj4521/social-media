@@ -24,22 +24,34 @@ private:
 
     // Private constructor for Singleton
     SystemCore();
-    
+
     // Prevent copying
     SystemCore(const SystemCore&) = delete;
     SystemCore& operator=(const SystemCore&) = delete;
 
+    // Unique ID trackers
+    int nextUserID;
+    int nextPostID;
+
+    // Helpers
+    
 public:
     // Singleton access
     static SystemCore& getInstance();
     
     // Destructor
     ~SystemCore();
-
+    
+    // Unique ID generators
+    std::string generateUserID();
+    std::string generatePostID();
+    
     // Data persistence
     void loadAllData();
     void saveAllData();
     
+    void updateNextUserID();
+    void updateNextPostID();
     // User management
     User* getUser(const std::string& userID);
     bool addUser(const User& u);

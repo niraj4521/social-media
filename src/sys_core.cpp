@@ -3,19 +3,24 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <mutex>
 
-// Initialize static members
+// ---------------------- Static Member Initialization ----------------------
 SystemCore* SystemCore::instance = nullptr;
 std::mutex SystemCore::instanceMutex;
 
+// ---------------------- Constructor / Destructor ----------------------
 SystemCore::SystemCore() {
     log("INFO", "SystemCore initialized");
+    nextUserID = 1000; // default starting point
+    nextPostID = 1000;
 }
 
 SystemCore::~SystemCore() {
     log("INFO", "SystemCore destroyed");
 }
 
+// ---------------------- Singleton Access ----------------------
 SystemCore& SystemCore::getInstance() {
     std::lock_guard<std::mutex> lock(instanceMutex);
     if (!instance) {
@@ -24,12 +29,12 @@ SystemCore& SystemCore::getInstance() {
     return *instance;
 }
 
-// Load all data from files
+// ---------------------- Data Loading ----------------------
 void SystemCore::loadAllData() {
     std::lock_guard<std::mutex> lock(coreMutex);
-    
-    // Load users
-    std::ifstream userFile("data/users.txt");
+
+    // Load Users
+    std::ifstream userFile("data/user.txt");
     if (userFile.is_open()) {
         std::string line;
         int count = 0;
@@ -38,6 +43,7 @@ void SystemCore::loadAllData() {
             try {
                 User u = User::deserialize(line);
                 users[u.getUserID()] = u;
+                userNotifiers[u.getUserID()] = std::make_unique<PostNotifier>();
                 count++;
             } catch (const std::exception& e) {
                 log("ERROR", "Failed to deserialize user: " + std::string(e.what()));
@@ -45,11 +51,12 @@ void SystemCore::loadAllData() {
         }
         userFile.close();
         log("INFO", "Loaded " + std::to_string(count) + " users");
+        updateNextUserID();
     } else {
-        log("WARNING", "users.txt not found, starting fresh");
+        log("WARNING", "user.txt not found, starting fresh");
     }
-    
-    // Load posts
+
+    // Load Posts
     std::ifstream postFile("data/posts.txt");
     if (postFile.is_open()) {
         std::string line;
@@ -71,12 +78,12 @@ void SystemCore::loadAllData() {
     }
 }
 
-// Save all data to files
+// ---------------------- Data Saving ----------------------
 void SystemCore::saveAllData() {
     std::lock_guard<std::mutex> lock(coreMutex);
-    
-    // Save users
-    std::ofstream userFile("data/users.txt");
+
+    // Save Users
+    std::ofstream userFile("data/user.txt");
     if (userFile.is_open()) {
         for (const auto& pair : users) {
             userFile << pair.second.serialize() << "\n";
@@ -84,10 +91,10 @@ void SystemCore::saveAllData() {
         userFile.close();
         log("INFO", "Saved " + std::to_string(users.size()) + " users");
     } else {
-        log("ERROR", "Failed to open users.txt for writing");
+        log("ERROR", "Failed to open user.txt for writing");
     }
-    
-    // Save posts
+
+    // Save Posts
     std::ofstream postFile("data/posts.txt");
     if (postFile.is_open()) {
         for (const auto& pair : posts) {
@@ -100,7 +107,46 @@ void SystemCore::saveAllData() {
     }
 }
 
-// User management
+// ---------------------- Helper: User ID ----------------------
+void SystemCore::updateNextUserID() {
+    int maxID = 999; // so next becomes u_1000 if empty
+    for (const auto& [id, user] : users) {
+        try {
+            int num = std::stoi(id.substr(2)); // remove "u_"
+            if (num > maxID) maxID = num;
+        } catch (...) {
+            continue;
+        }
+    }
+    nextUserID = maxID + 1;
+    log("INFO", "Next User ID set to u_" + std::to_string(nextUserID));
+}
+
+void SystemCore::updateNextPostID() {
+    int maxID = 999; // start default
+    for (const auto& [id, post] : posts) {
+        try {
+            int num = std::stoi(id.substr(2)); // remove "p_"
+            if (num > maxID) maxID = num;
+        } catch (...) { continue; }
+    }
+    nextPostID = maxID + 1;
+    log("INFO", "Next Post ID set to p_" + std::to_string(nextPostID));
+}
+
+
+std::string SystemCore::generateUserID() {
+    std::lock_guard<std::mutex> lock(coreMutex);
+    return "u_" + std::to_string(nextUserID++);
+}
+
+std::string SystemCore::generatePostID() {
+    std::lock_guard<std::mutex> lock(coreMutex);
+    return "p_" + std::to_string(nextPostID++);
+}
+
+
+// ---------------------- User Management ----------------------
 User* SystemCore::getUser(const std::string& userID) {
     auto it = users.find(userID);
     return (it != users.end()) ? &(it->second) : nullptr;
@@ -108,10 +154,17 @@ User* SystemCore::getUser(const std::string& userID) {
 
 bool SystemCore::addUser(const User& u) {
     std::lock_guard<std::mutex> lock(coreMutex);
+
+    if (usernameExists(u.getUsername())) {
+        log("WARNING", "Username already exists: " + u.getUsername());
+        return false;
+    }
+
     if (users.find(u.getUserID()) != users.end()) {
         log("WARNING", "User already exists: " + u.getUserID());
         return false;
     }
+
     users[u.getUserID()] = u;
     userNotifiers[u.getUserID()] = std::make_unique<PostNotifier>();
     log("INFO", "User added: " + u.getUserID());
@@ -139,7 +192,7 @@ std::vector<User> SystemCore::getAllUsers() {
     return result;
 }
 
-// Post management
+// ---------------------- Post Management ----------------------
 Post* SystemCore::getPost(const std::string& postID) {
     auto it = posts.find(postID);
     return (it != posts.end()) ? &(it->second) : nullptr;
@@ -147,16 +200,18 @@ Post* SystemCore::getPost(const std::string& postID) {
 
 bool SystemCore::addPost(const Post& p) {
     std::lock_guard<std::mutex> lock(coreMutex);
+
     if (posts.find(p.getPostID()) != posts.end()) {
         log("WARNING", "Post already exists: " + p.getPostID());
         return false;
     }
+
     posts[p.getPostID()] = p;
     log("INFO", "Post added: " + p.getPostID());
-    
+
     // Notify followers
     notifyFollowers(p.getUserID(), p);
-    
+
     return true;
 }
 
@@ -178,36 +233,36 @@ std::vector<Post> SystemCore::getAllPosts() {
     return result;
 }
 
-// Follow operations
+// ---------------------- Follow Operations ----------------------
 bool SystemCore::followUser(const std::string& followerID, const std::string& followeeID) {
     std::lock_guard<std::mutex> lock(coreMutex);
-    
+
     User* follower = getUser(followerID);
     User* followee = getUser(followeeID);
-    
+
     if (!follower || !followee) {
         log("ERROR", "User not found in follow operation");
         return false;
     }
-    
+
     follower->follow(followeeID);
     followee->addFollower(followerID);
-    
+
     log("INFO", followerID + " followed " + followeeID);
     return true;
 }
 
 bool SystemCore::unfollowUser(const std::string& followerID, const std::string& followeeID) {
     std::lock_guard<std::mutex> lock(coreMutex);
-    
+
     User* follower = getUser(followerID);
     User* followee = getUser(followeeID);
-    
+
     if (!follower || !followee) {
         log("ERROR", "User not found in unfollow operation");
         return false;
     }
-    
+
     follower->unfollow(followeeID);
     followee->removeFollower(followerID);
     
@@ -215,7 +270,7 @@ bool SystemCore::unfollowUser(const std::string& followerID, const std::string& 
     return true;
 }
 
-// Observer pattern
+// ---------------------- Observer Pattern ----------------------
 void SystemCore::registerObserverForUser(const std::string& userID, IObserver* observer) {
     if (userNotifiers.find(userID) != userNotifiers.end()) {
         userNotifiers[userID]->registerObserver(observer);
@@ -228,29 +283,29 @@ void SystemCore::notifyFollowers(const std::string& userID, const Post& p) {
     }
 }
 
-// Feed generation
+// ---------------------- Feed Generation ----------------------
 std::vector<Post> SystemCore::generateFeedForUser(const std::string& userID) {
     std::vector<Post> feed;
-    
+
     User* user = getUser(userID);
     if (!user) return feed;
-    
+
     std::vector<std::string> following = user->getFollowing();
-    
-    // Collect posts from all followed users
+
+    // Collect posts from followed users
     for (const std::string& followedID : following) {
         std::vector<Post> userPosts = getPostsByUser(followedID);
         feed.insert(feed.end(), userPosts.begin(), userPosts.end());
     }
-    
-    // Sort by timestamp (newest first)
-    std::sort(feed.begin(), feed.end(), 
-        [](const Post& a, const Post& b) { return a.getTimestamp() > b.getTimestamp(); });
-    
+
+    // Sort by timestamp descending
+    std::sort(feed.begin(), feed.end(),
+              [](const Post& a, const Post& b) { return a.getTimestamp() > b.getTimestamp(); });
+
     return feed;
 }
 
-// Statistics
+// ---------------------- Stats & Cleanup ----------------------
 int SystemCore::getUserCount() const {
     return users.size();
 }
