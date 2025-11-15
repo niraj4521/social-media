@@ -99,3 +99,61 @@
 [2025-11-12 18:56:57] INFO: Saved 5 posts
 [2025-11-12 18:56:57] INFO: Saved 3 users
 [2025-11-12 18:56:57] INFO: Saved 5 posts
+[2025-11-12 23:21:09] INFO: SystemCore initialized
+[2025-11-12 23:21:09] INFO: Loaded 3 users
+[2025-11-12 23:21:09] INFO: Loaded 5 posts
+[2025-11-12 23:21:51] WARNING: User already exists: u_1000
+[2025-11-12 23:22:36] INFO: SystemCore initialized
+[2025-11-12 23:22:36] INFO: Loaded 3 users
+[2025-11-12 23:22:36] INFO: Loaded 5 posts
+[2025-11-12 23:32:20] INFO: SystemCore initialized
+[2025-11-12 23:32:20] WARNING: user.txt not found, starting fresh
+[2025-11-12 23:32:20] INFO: Loaded 5 posts
+[2025-11-12 23:32:38] INFO: User added: u_1000
+[2025-11-12 23:33:04] WARNING: Post already exists: p_1001
+[2025-11-12 23:41:02] INFO: SystemCore initialized
+[2025-11-12 23:41:02] WARNING: user.txt not found, starting fresh
+[2025-11-12 23:41:02] INFO: Loaded 5 posts
+[2025-11-12 23:41:16] INFO: User added: u_1000
+[2025-11-12 23:41:40] WARNING: Post already exists: p_1001
+[2025-11-12 23:48:22] INFO: SystemCore initialized
+[2025-11-12 23:48:22] WARNING: user.txt not found, starting fresh
+[2025-11-12 23:48:22] INFO: Loaded 5 posts
+[2025-11-12 23:48:38] INFO: User added: u_1000
+[2025-11-12 23:48:53] WARNING: Post already exists: p_1001
+[2025-11-13 09:44:54] INFO: SystemCore initialized
+[2025-11-13 09:44:54] WARNING: user.txt not found, starting fresh
+[2025-11-13 09:44:54] INFO: Loaded 5 posts
+[2025-11-13 09:44:54] INFO: Next Post ID set to p_1005
+[2025-11-13 09:45:13] INFO: User added: u_1000
+[2025-11-13 09:45:13] INFO: Saved 1 users
+[2025-11-13 09:45:13] INFO: Saved 5 posts
+[2025-11-13 09:45:32] INFO: Post added: p_1005
+[2025-11-13 09:45:32] INFO: Saved 1 users
+[2025-11-13 09:45:32] INFO: Saved 6 posts
+[2025-11-13 09:46:52] INFO: User added: u_1001
+[2025-11-13 09:46:52] INFO: Saved 2 users
+[2025-11-13 09:46:52] INFO: Saved 6 posts
+[2025-11-13 09:47:05] INFO: u_1001 followed u_1000
+[2025-11-13 09:47:05] INFO: Saved 2 users
+[2025-11-13 09:47:05] INFO: Saved 6 posts
+[2025-11-13 09:47:20] INFO: Saved 2 users
+[2025-11-13 09:47:20] INFO: Saved 6 posts
+[2025-11-13 09:47:48] INFO: Saved 2 users
+[2025-11-13 09:47:48] INFO: Saved 6 posts
+[2025-11-13 09:48:48] INFO: Saved 2 users
+[2025-11-13 09:48:48] INFO: Saved 6 posts
+[2025-11-13 09:48:48] INFO: Saved 2 users
+[2025-11-13 09:48:48] INFO: Saved 6 posts
+[2025-11-13 09:49:14] INFO: SystemCore initialized
+[2025-11-13 09:49:14] INFO: Loaded 2 users
+[2025-11-13 09:49:14] INFO: Next User ID set to u_1002
+[2025-11-13 09:49:14] INFO: Loaded 6 posts
+[2025-11-13 09:49:14] INFO: Next Post ID set to p_1006
+[2025-11-13 09:49:59] INFO: User added: u_1002
+[2025-11-13 09:49:59] INFO: Saved 3 users
+[2025-11-13 09:49:59] INFO: Saved 6 posts
+[2025-11-13 09:50:30] INFO: Saved 3 users
+[2025-11-13 09:50:30] INFO: Saved 6 posts
+[2025-11-13 09:50:30] INFO: Saved 3 users
+[2025-11-13 09:50:30] INFO: Saved 6 posts

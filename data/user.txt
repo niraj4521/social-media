@@ -1,0 +1,3 @@
+u_1002|prayag|prayag bavadiya|i am cool photographer||
+u_1000|sam|samual jackson|orewa cool des|u_1001|
+u_1001|sharad|sharad vyas|i am a cool web developer||u_1000
